@@ -1,0 +1,20 @@
+# ===============================
+# = LOGGING
+# ===============================
+logging:
+  level:
+    org:
+      springframework:
+        web: ERROR
+
+# ===============================
+# = Spring Doc
+# ===============================
+springdoc:
+  version: 1.5.2
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /test/api/1.0/swagger-ui.html
+    operationsSorter: method
+    enabled: true

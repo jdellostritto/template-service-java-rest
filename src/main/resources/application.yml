@@ -1,0 +1,27 @@
+# ===============================
+# = Spring Profiles
+# ===============================
+spring:
+  profiles:
+    active: default
+    locale: en
+
+# ===============================
+# = Server Ports.
+# ===============================
+server:
+  port: 8700
+
+# ===============================
+# = Actuator.
+# ===============================
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health
+  server:
+    port: 9001
+
+

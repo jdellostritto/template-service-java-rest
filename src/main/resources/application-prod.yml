@@ -1,0 +1,18 @@
+# ===============================
+# = LOGGING
+# ===============================
+logging:
+  level:
+    org:
+      springframework:
+        web: ERROR
+
+# ===============================
+# = Spring Doc
+# ===============================
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+    

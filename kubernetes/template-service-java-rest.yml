@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: template-service-java-rest
+  labels:
+    app: template-service-java-rest
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8700
+  selector:
+    name: template-service-java-rest
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: template-service-java-rest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: template-service-java-rest
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        name: template-service-java-rest
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "name"
+                    operator: In
+                    values:
+                    - template-service-java-rest
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: template-service-java-rest
+        image: acme.io/template-service-java-rest:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 40m
+            memory: 50Mi
+        ports:
+        - containerPort: 8700
+          name: rest
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: default

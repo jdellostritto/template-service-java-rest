@@ -77,8 +77,10 @@ kube-delete-ps:
 	kubectl delete -f ./kubernetes/$(PROJECT).yml
 	del .\kubernetes\$(PROJECT).yml
 
-# Windows powershell run.
-# Dockerfile must be edited for these to work.
+# These are intended to run a Windows containers from powershell.
+# Dockerfile must be edited turning off the Linux sections and turning on the
+# Windows. You will then need to run image-win first followed by the run-win.
+# You will need to switch docker desktop to Windows Containers.
 image-win: 
 	docker build -t $(IMAGE):$(BUILD) .
 

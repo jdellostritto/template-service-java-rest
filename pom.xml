@@ -12,7 +12,7 @@
 	<artifactId>template-service-java-rest</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
 	<name>Template Java service rest</name>
-	<description>Template Project Derived from a Spring Boot project supporting on RESTful with no DB.</description>
+	<description>Template Project Derived from a Spring Boot project supporting RESTful.</description>
 
 	<properties>
 		<java.version>11</java.version>

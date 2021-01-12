@@ -6,4 +6,4 @@ services:
       SPRING_PROFILES_ACTIVE: default
     ports:
       - 8700:8700
-      - 9000:9000
+      - 9001:9001
